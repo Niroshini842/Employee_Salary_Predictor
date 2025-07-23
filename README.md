@@ -70,7 +70,7 @@ This project aims to:
 ## 🎥 Demo
 
 You can try the live version here (if hosted):  
-🔗 `https://your-render-url.com`
+🔗 https://employee-salary-predictor-2.onrender.com
 
 
 ---
