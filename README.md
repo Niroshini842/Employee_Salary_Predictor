@@ -12,7 +12,6 @@ An end-to-end machine learning project that classifies whether an employee earns
 - [Features](#-features)
 - [Model](#-model)
 - [Demo](#-demo)
-- [Screenshots](#-screenshots)
 - [How to Run](#-how-to-run)
 - [Future Scope](#-future-scope)
 - [License](#-license)
@@ -73,15 +72,6 @@ This project aims to:
 You can try the live version here (if hosted):  
 🔗 `https://your-render-url.com`
 
----
-
-## 🖼 Screenshots
-
-> Add screenshots of:
-- Home form page
-- Prediction result page
-- Dark mode toggle
-- Mobile responsiveness
 
 ---
 
