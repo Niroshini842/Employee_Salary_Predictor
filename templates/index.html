@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Salary Predictor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleTheme() {
+      const htmlEl = document.documentElement;
+      htmlEl.dataset.theme = htmlEl.dataset.theme === "light" ? "dark" : "light";
+    }
+
+    function clearForm() {
+      document.getElementById("salaryForm").reset();
+      document.getElementById("predictionResult").innerText = "";
+    }
+  </script>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 min-h-screen flex flex-col items-center justify-center p-4">
+
+  <div class="w-full max-w-3xl bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-xl space-y-4">
+    <div class="flex justify-between items-center">
+      <h1 class="text-3xl font-bold">💼 Employee Salary Classifier</h1>
+      <button onclick="toggleTheme()" class="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-lg">🌙 Toggle Mode</button>
+    </div>
+
+    <form id="salaryForm" method="POST" action="/predict" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      
+      <div>
+        <label class="block font-semibold">Age</label>
+        <input type="number" name="age" min="18" max="100" required title="Enter age between 18 and 100"
+               class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+      </div>
+
+      <div>
+        <label class="block font-semibold">Gender</label>
+        <select name="gender" required class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold">Education</label>
+        <select name="education" required title="Used to determine numeric education level"
+                class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+          <option>Bachelors</option>
+          <option>Masters</option>
+          <option>HS-grad</option>
+          <option>Some-college</option>
+          <option>Doctorate</option>
+          <option>Assoc-acdm</option>
+          <option>Assoc-voc</option>
+          <option>Prof-school</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold">Workclass</label>
+        <input type="text" name="workclass" required class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+      </div>
+
+      <div>
+        <label class="block font-semibold">Hours per Week</label>
+        <input type="number" name="hours" min="1" max="100" required title="Typical weekly working hours"
+               class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+      </div>
+
+      <div>
+        <label class="block font-semibold">Occupation</label>
+        <select name="occupation" required class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+          <option>Tech-support</option>
+          <option>Craft-repair</option>
+          <option>Other-service</option>
+          <option>Sales</option>
+          <option>Exec-managerial</option>
+          <option>Prof-specialty</option>
+          <option>Handlers-cleaners</option>
+          <option>Machine-op-inspct</option>
+          <option>Adm-clerical</option>
+          <option>Farming-fishing</option>
+          <option>Transport-moving</option>
+          <option>Priv-house-serv</option>
+          <option>Protective-serv</option>
+          <option>Armed-Forces</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold">Marital Status</label>
+        <select name="marital" required class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+          <option>Never-married</option>
+          <option>Married-civ-spouse</option>
+          <option>Divorced</option>
+          <option>Separated</option>
+          <option>Married-spouse-absent</option>
+          <option>Widowed</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold">Native Country</label>
+        <select name="country" required class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+          <option>United-States</option>
+          <option>India</option>
+          <option>Mexico</option>
+          <option>Philippines</option>
+          <option>Germany</option>
+          <option>Canada</option>
+          <option>England</option>
+          <option>China</option>
+          <option>Italy</option>
+          <option>Vietnam</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-semibold">Relationship</label>
+        <input type="text" name="relationship" required class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+      </div>
+
+      <div>
+        <label class="block font-semibold">Race</label>
+        <input type="text" name="race" required class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+      </div>
+
+      <div>
+        <label class="block font-semibold">Capital Gain</label>
+        <input type="number" name="gain" min="0" required title="Capital gain in USD"
+               class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+      </div>
+
+      <div>
+        <label class="block font-semibold">Capital Loss</label>
+        <input type="number" name="loss" min="0" required title="Capital loss in USD"
+               class="w-full p-2 rounded bg-gray-100 dark:bg-gray-700 border">
+      </div>
+
+      <div class="col-span-2 flex justify-between mt-4">
+        <button type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg font-semibold">
+          🔍 Predict Salary
+        </button>
+        <button type="button" onclick="clearForm()"
+                class="bg-red-500 hover:bg-red-600 text-white px-5 py-2 rounded-lg font-semibold">
+          ♻️ Clear Form
+        </button>
+      </div>
+    </form>
+
+    <div id="predictionResult" class="text-xl font-semibold mt-4 text-center text-blue-700 dark:text-blue-300">
+      {% if prediction_text %}
+        {{ prediction_text }}
+      {% endif %}
+    </div>
+  </div>
+
+</body>
+</html>
