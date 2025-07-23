@@ -13,8 +13,7 @@ An end-to-end machine learning project that classifies whether an employee earns
 - [Model](#-model)
 - [Demo](#-demo)
 - [How to Run](#-how-to-run)
-- [Future Scope](#-future-scope)
-- [License](#-license)
+
 
 ---
 
@@ -57,7 +56,7 @@ This project aims to:
 
 ## ⚙️ Model
 
-- Dataset: [UCI Adult Income Dataset](https://archive.ics.uci.edu/ml/datasets/adult)
+- Dataset: Adult Income Dataset
 - Preprocessing:
   - Label encoding for education
   - One-hot encoding for categorical variables
@@ -79,5 +78,5 @@ You can try the live version here :
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/employee-salary-classification.git
-cd employee-salary-classification
+git clone https://github.com/Niroshini842/Employee_Salary_Predictor.git
+cd Employee_Salary_Predictor
