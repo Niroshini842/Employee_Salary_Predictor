@@ -69,7 +69,7 @@ This project aims to:
 ## 🎥 Demo
 
 You can try the live version here :  
-🔗 https://employee-salary-predictor-2.onrender.com
+🔗 https://employee-salary-predictor-1-jghf.onrender.com
 
 
 ---
